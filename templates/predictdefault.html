@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Credit Card Default</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Our CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Credit Card Default</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/data-exploration">Data Exploration</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Models
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/models/logreg">Logistic Regression</a>
+                <a class="dropdown-item" href="/models/trees">Trees</a>
+                <a class="dropdown-item" href="/models/knn">K Nearest Neighbors</a>
+                <a class="dropdown-item" href="/models/svm">Support Vector Machine</a>
+                <a class="dropdown-item" href="/models/nn">Neural Network</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Will I Default?</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="container-fluid">
+        <div class="row justify-content-center">
+            <form action="{{url_for('model_prediction')}}" method="post">
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Credit Score</label>
+                    <input name="credit-score" class="form-control" id="exampleFormControlInput1" placeholder="Enter your credit Score">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Previous Defaults</label>
+                    <input name="prev-defaults" class="form-control" id="exampleFormControlInput1" placeholder="Enter the no. of times you've defaulted">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Defaults in last 6 Months</label>
+                    <input name="last-6-defaults" class="form-control" id="exampleFormControlInput1" placeholder="Enter the no. of times you've defaulted in the last 6 months">
+                </div>
+                <div class="form-group">
+                  <label for="exampleFormControlInput1">Net Yearly Income</label>
+                  <input name="net-income" class="form-control" id="exampleFormControlInput1" placeholder="Enter your net yearly income">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Yearly Debt Payments</label>
+                    <input name="debt-payments" class="form-control" id="exampleFormControlInput1" placeholder="Enter your yearly debt payments">
+                </div>
+                <input class="btn btn-primary" type="submit" value="Submit">
+              </form>
+        </div>
+
+        <div class="row justify-content-center mt-5">
+            {{ final_prediction }}
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
