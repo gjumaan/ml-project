@@ -11,50 +11,127 @@
   <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Credit Card Default</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+      <a class="navbar-brand" href="#">Credit Card Default</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/etl">ETL</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/data-exploration">Data Exploration</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Models
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/models/logreg">Logistic Regression</a>
+              <a class="dropdown-item" href="/models/trees">Trees</a>
+              <a class="dropdown-item" href="/models/knn">K Nearest Neighbors</a>
+              <a class="dropdown-item" href="#">Support Vector Machine</a>
+              <a class="dropdown-item" href="/models/nn">Neural Network</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/predict-default">Will I Default?</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+      <h1 class="text-center">Support Vector Machine</h1>
+      <hr>
+      <div class="row justify-content-center mt-4">
+        <div class="col">
+          <p>Support vector machine, also known as SVM, is a supervised learning model that is widely used for classification problems. SVM models utilize a hyperplane, a decision boundary that helps classify data points based on their number of features. By finding a hyperplane that maximizes distance between data points, future data points can be classified with more accuracy. Thus, SVM models are very advantageous when working with high dimensional data.
+        </div>
+        <div class="col">
+          <img src="{{ url_for('static', filename='images/svm_graph.png') }}" height="100%" width="100%"> 
+        </div>
+      </div>
+
+      <h4>Implementation of the AMEX Dataset</h4>
+      <div class="row justify-content-center mt-5">
+        <div class="col">
+          <img src="{{ url_for('static', filename='images/svm_classification.png') }}" height="100%" width="100%"> 
+        </div>
+        <div class="col">
+          <p class="mt">
+            The training AMEX dataset contains 33 features that will be used by the SVM model to accurately predict default or no-default. After fitting the training data, the SVM model scored an accuracy of 98%. Upon doing a classification report, it was found that the model has a precision of 98% when classifying a datapoint as no-default and a precision of 100% when classifying a datapoint as default. Additionally, a confusion matrix was created to compare the predicted values of the model to the actual values as shown below. 
+          </p>
+        </div>
+      </div>
       
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/etl">ETL</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/data-exploration">Data Exploration</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Models
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/models/logreg">Logistic Regression</a>
-                <a class="dropdown-item" href="/models/trees">Trees</a>
-                <a class="dropdown-item" href="/models/knn">K Nearest Neighbors</a>
-                <a class="dropdown-item" href="#">Support Vector Machine</a>
-                <a class="dropdown-item" href="/models/nn">Neural Network</a>
+      <div class="row justify-content-center mt-5">
+        <h4>
+          Confusion Matrix 
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary btn-circle" data-toggle="modal" data-target="#exampleModal">
+            ?
+          </button>
+        </h4>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
+                A confusion matrix is used to describe the performance of a classifical model
+                by comparing the predicted and actual values.
+                <hr>
+                <img src="{{ url_for('static', filename='images/confusion_matrix.png') }}" height="100%" width="100%"> 
               </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/data-analysis">Comparing ML Models</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/predict-default">Will I Default?</a>
-            </li>
-          </ul>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
         </div>
-      </nav>
+      </div>
 
-      <div class="container-fluid">
-        <div class="row justify-content-center">
-          SVM Page
+      <div class="row mt-5">
+        <div class="col">
+          <img src="{{ url_for('static', filename='images/svm_confusion.png') }}" height="80%" width="100%"> 
         </div>
+        <div class="col">
+          <table class="table table-sm">
+            <thead>
+              <tr>
+                <th scope="col">Labels</th>
+                <th scope="col">Values</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">True Positive</th>
+                <td>9989</td>
+              </tr>
+              <tr>
+                <th scope="row">False Negative</th>
+                <td>0</td>
+              </tr>
+              <tr>
+                <th scope="row">False Positive</th>
+                <td>209</td>
+              </tr>
+              <tr>
+                <th scope="row">True Negative</th>
+                <td>679</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
-
+      
     <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

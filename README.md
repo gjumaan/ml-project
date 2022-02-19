@@ -9,7 +9,7 @@ Our team decided to do use Machine Learning Algorithms on American Express clien
 One of the main reasons behind our final project stems from wanting to use real world data, that's a given, but we also wanted to find data that is applicable to our every day lives. What is something we all use everyday, at times forgetting the power we hold in our pockets, wallets, and phones? Credit cards. This idea lead us to be excited by the implications for people using our site for personal reasons. As well on the corporate side, where we can use our code to help companies make decisions or adjust requirements to result in less credit card defaults overall. Our project is simple, but powerful. We hope you will explore our website, and get inspired for your own machine learning projects in the future!
 
 
-### Our Project is hosted on Heroku [here](https://credit-default-practice.herokuapp.com/) 
+### Our Project is hosted on Heroku [here](https://ml-credit-default.herokuapp.com/) 
 
 To use the the "Will I Default?" Predictor 
 

@@ -50,27 +50,32 @@
     </nav>
 
     <div class="container">
-      <div class="row justify-content-center mt-3">
-        <h1 class="mb-3">Neural Network</h1>
+      <h1 class="text-center">Neural Network</h1>
+      <hr>
+      <div class="row justify-content-center mt-4">
         <img src="{{ url_for('static', filename='images/nn_graphic.png') }}" height="100%" width="100%"> 
-        <p class="mt-4">A neural network is a simplified model of the way the human brain processes information. It works by simulating a large number of interconnected processing units that resemble abstract versions of neurons. <a href=" https://www.ibm.com/docs/en/spss-modeler/18.0.0?topic=networks-neural-model">[1]</a> The basic units are neurons, which are typically organized into layers. There are typically three parts in a neural network: an input layer, with units representing the input fields; one or more hidden layers; and an output layer, with a unit or units representing the target field(s). In this section, we explored the outcomes of neural network models with 1 and 2 hidden layers. We refer to the models with 2 hidden layers as deep learning models.
-        </p>
+        <p class="mt-3">A neural network is a simplified model of the way the human brain processes information. It works by simulating a large number of interconnected processing units that resemble abstract versions of neurons. <a href=" https://www.ibm.com/docs/en/spss-modeler/18.0.0?topic=networks-neural-model">[1]</a> The basic units are neurons, which are typically organized into layers. There are typically three parts in a neural network: an input layer, with units representing the input fields; one or more hidden layers; and an output layer, with a unit or units representing the target field(s). In this section, we explored the outcomes of neural network models with 1 and 2 hidden layers. We refer to the models with 2 hidden layers as deep learning models.
       </div>
       
-      <div class="row justify-content-center mt-5">
-        <h4>Neural Network Model with 1 Hidden Layer</h4>
-        <img src="{{ url_for('static', filename='images/neural_network_structure.jpeg') }}" height="100%" width="100%"> 
+      <div class="row justify-content-center mt-3 mb-5">
+        <div class="col">
+          <h6 class="text-center">Neural Network Model with 1 Hidden Layer</h6>
+          <img src="{{ url_for('static', filename='images/neural_network_structure.jpeg') }}" height="100%" width="100%"> 
+        </div>
+        <div class="col">
+          <h6 class="text-center">Neural Network Model with 2 Hidden Layers</h6>
+          <img src="{{ url_for('static', filename='images/deep_learning_structure.jpeg') }}" height="100%" width="100%"> 
+        </div>
       </div>
 
-      <div class="row justify-content-center mt-5">
-        <h4>Neural Network Model with 2 Hidden Layers</h4>
-        <img src="{{ url_for('static', filename='images/deep_learning_structure.jpeg') }}" height="100%" width="100%"> 
-      </div>
-
-      <div class="row justify-content-center mt-5">
-        <h4>Model Parameters</h4>
-        <p>The cleaned Amex Dataset has 32 features. We first constructed the models using all features. The neural network with 1 hidden layer had 3,502 trainable parameters, and the deep learning model with 2 hidden layers had 13,602 trainable parameters. Since other models in this project have already identified the most important 5 features in this dataset, we used the top 5 features to construct simplified neural network models. The neural network with 1 hidden layer had 802 trainable parameters, and the deep learning model with 2 hidden layers had 10,902 trainable parameters. A comparison of the parameters in the 4 models is shown in the table below.</p>
-        <img src="{{ url_for('static', filename='images/nn_compare.jpeg') }}" height="100%" width="100%"> 
+      <h4 class="text-center mt-5">Model Parameters</h4>
+      <div class="row justify-content-center">
+        <div class="col">
+          <img src="{{ url_for('static', filename='images/nn_compare.jpeg') }}" height="100%" width="100%"> 
+        </div>
+        <div class="col">
+          <p>The cleaned Amex Dataset has 32 features. We first constructed the models using all features. The neural network with 1 hidden layer had 3,502 trainable parameters, and the deep learning model with 2 hidden layers had 13,602 trainable parameters. Since other models in this project have already identified the most important 5 features in this dataset, we used the top 5 features to construct simplified neural network models. The neural network with 1 hidden layer had 802 trainable parameters, and the deep learning model with 2 hidden layers had 10,902 trainable parameters. A comparison of the parameters in the 4 models is shown in the table below.</p>
+        </div>
       </div>
 
       <div class="row justify-content-center mt-5">

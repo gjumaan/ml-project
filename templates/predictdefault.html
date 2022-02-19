@@ -51,33 +51,37 @@
 
       <div class="container-fluid">
         <div class="row justify-content-center">
-            <form action="{{url_for('model_prediction')}}" method="post">
+            <form class="text-center" method="post">
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Credit Score</label>
-                    <input name="credit-score" class="form-control" id="exampleFormControlInput1" placeholder="Enter your credit Score">
+                    <input name="credit-score" class="form-control" id="exampleFormControlInput1">
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Previous Defaults</label>
-                    <input name="prev-defaults" class="form-control" id="exampleFormControlInput1" placeholder="Enter the no. of times you've defaulted">
+                    <input name="prev-defaults" class="form-control" id="exampleFormControlInput1">
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Defaults in last 6 Months</label>
-                    <input name="last-6-defaults" class="form-control" id="exampleFormControlInput1" placeholder="Enter the no. of times you've defaulted in the last 6 months">
+                    <input name="last-6-defaults" class="form-control" id="exampleFormControlInput1">
                 </div>
                 <div class="form-group">
                   <label for="exampleFormControlInput1">Net Yearly Income</label>
-                  <input name="net-income" class="form-control" id="exampleFormControlInput1" placeholder="Enter your net yearly income">
+                  <input name="net-income" class="form-control" id="exampleFormControlInput1">
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Yearly Debt Payments</label>
-                    <input name="debt-payments" class="form-control" id="exampleFormControlInput1" placeholder="Enter your yearly debt payments">
+                    <input name="debt-payments" class="form-control" id="exampleFormControlInput1">
                 </div>
                 <input class="btn btn-primary" type="submit" value="Submit">
               </form>
         </div>
 
         <div class="row justify-content-center mt-5">
+          {% if final_prediction %}
             {{ final_prediction }}
+          {% else %}
+            {{ error_message }}
+          {% endif %}
         </div>
     </div>
 
