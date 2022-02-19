@@ -22,10 +22,10 @@
             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/etl">ETL</a>
+            <a class="nav-link" href="#">ETL</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Data Exploration</a>
+            <a class="nav-link" href="/data-exploration">Data Exploration</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -45,11 +45,29 @@
         </ul>
       </div>
     </nav>
-    
-    <div class='tableauPlaceholder' id='viz1645146087926' style='position: relative'><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='FinalProjectCreditDefaultVisualization&#47;AmexDataVisualizations' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>
-    
-    <!-- Tableu JS -->
-    <script type='text/javascript'>                    var divElement = document.getElementById('viz1645146087926');                    var vizElement = divElement.getElementsByTagName('object')[0];                    vizElement.style.width='100%';vizElement.style.height=(divElement.offsetWidth*0.75)+'px';                    var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
+
+    <div class="container">
+      <div class="row justify-content-center mt-3">
+        <h1>About the Data</h1>
+        <p>
+          The data originates from a competition sponsored by America Express, a division in India, and Analytics Vidhya that tests contestants each year in different analytical capabilities, last year was on machine learning. This data in-turn presented us a great base for our own machine learning project exploring multiple models, to figure out which one gives the most accurate predictions that aptly reflect the data.
+        </p>
+      </div>
+
+      <div class="row justify-content-center mt-5">
+        <h4>Cleaning Data</h4>
+        <p>
+          Cleaning the data was easy, the Amex Hackathon Competition did a relatively good job at giving the participants a partially cleaned up dataset. They probably left some wiggle room for the contestants to clean it up even more,  so their own machine learning methodologies could properly function, hence the competition.
+        </p>
+        <p>
+          Our team had to do the same. We ran into a few issues that ranged in from minors one to major ones for the ETL portion of this project. There were several small issues such as;  incorrect data inputs from several columns that had to be expunged . As well as, we deleted any rows that contained missing data in any of the cells, and dropped unnecessary columns, so it wouldn’t trip much any of our machine learning algorithms. 
+        </p>
+        <p>
+          The major issue was that some of our data was string based, answering questions with a confirmation or a negative answer, and even what type of job the Amex cardholder had. The problem was how to turn those string answers into numeric values, so our machine learning methodologies could properly read the data. Google had numerous complex intricate options to do this, but our TAs helpfully  pointed us to the get_dummies function that achieved the conversion to numeric data in an easy manner. However, it did enlarge the dataset as whole quite a bit, increasing the size in-turn slowed down our different methods, but the pros from the get_dummies severely outweighs the con of the increased size and time. We then split the remaining data with sklearn’s train_test_split and viola we are done transforming the data to something workable. All this work ended with a clean csv for all the project members to start their own work in understanding the accuracy and strengths of each of the methods.
+        </p>
+      </div>
+    </div>
+
     <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

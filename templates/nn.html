@@ -22,6 +22,9 @@
             <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="/etl">ETL</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="/data-exploration">Data Exploration</a>
           </li>
           <li class="nav-item dropdown">
@@ -71,27 +74,36 @@
         <h4>Model Outcomes</h4>
         <p>For models that utilized all 32 features, accuracies increased progressively with the increased epochs. For the model with 2 hidden layers, the loss for the testing data increased dramatically compared to the model with 1 hidden layer, suggesting possible overfitting with the deep learning model.</p>
         <div class="col">
-          <h6>Neural Networks (1 hidden layer)</h6>
           <div class="row">
-            <p>Accurate</p>
-            <p>Img</p>
+            <img src="{{ url_for('static', filename='images/neural_network_accuracy.jpg') }}" height="100%" width="100%"> 
           </div>
-          <h6>Neural Networks (1 hidden layer)</h6>
           <div class="row">
-            <p>Accuray</p>
-            <p>Img</p>
+            <img src="{{ url_for('static', filename='images/neural_network_loss.jpg') }}" height="100%" width="100%"> 
           </div>
         </div>
         <div class="col">
-          <h6>Neural Networks (1 hidden layer)</h6>
           <div class="row">
-            <p>Accuray</p>
-            <p>Img</p>
+            <img src="{{ url_for('static', filename='images/deep_learning_accuracy.jpg') }}" height="100%" width="100%"> 
           </div>
-          <h6>Neural Networks (1 hidden layer)</h6>
           <div class="row">
-            <p>Accuray</p>
-            <p>Img</p>
+            <img src="{{ url_for('static', filename='images/deep_learning_loss.jpg') }}" height="100%" width="100%"> 
+          </div>
+        </div>
+        <p>For models that utilized the top 5 features, the performance of the models with 1 and 2 hidden layers are very similar. Accuracy and loss for the training and testing data stabilized quickly for both models.</p>
+        <div class="col">
+          <div class="row">
+            <img src="{{ url_for('static', filename='images/neural_network_accuracy_top5.jpg') }}" height="100%" width="100%"> 
+          </div>
+          <div class="row">
+            <img src="{{ url_for('static', filename='images/neural_network_loss_top5.jpg') }}" height="100%" width="100%"> 
+          </div>
+        </div>
+        <div class="col">
+          <div class="row">
+            <img src="{{ url_for('static', filename='images/deep_learning_accuracy_top5.jpg') }}" height="100%" width="100%"> 
+          </div>
+          <div class="row">
+            <img src="{{ url_for('static', filename='images/deep_learning_loss_top5.jpg') }}" height="100%" width="100%"> 
           </div>
         </div>
       </div>
@@ -113,7 +125,7 @@
                 A confusion matrix is used to describe the performance of a classifical model
                 by comparing the predicted and actual values.
                 <hr>
-                <img src="{{ url_for('static', filename='images/confusion_matrix.png') }}" height="80%" width="100%"> 
+                <img src="{{ url_for('static', filename='images/confusion_matrix.png') }}" height="100%" width="100%"> 
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

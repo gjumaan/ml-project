@@ -15,6 +15,13 @@ def welcome():
         "index.html"
     )
 
+# ETL page
+@app.route("/etl")
+def etl():
+    return render_template(
+        "etl.html"
+    )
+
 # Data exploration page
 @app.route("/data-exploration")
 def data_exploration():
