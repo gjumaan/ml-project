@@ -29,6 +29,13 @@ def data_exploration():
         "dataexploration.html"
     )
 
+
+@app.route("/data-analysis")
+def data_analysis():
+    return render_template(
+        "data_analysis.html"
+    )
+
 # Pages for each model
 @app.route("/models/logreg")
 def log_reg():
