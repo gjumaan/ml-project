@@ -3,16 +3,24 @@
 <html lang="en-us">
   <head>
     <meta charset="UTF-8">
-    <title>Credit Card Default</title>
+    <title>Predicting Credit Card Default</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- Our CSS -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="shortcut icon" href="/static/images/favicon_credit2.gif" type="image/gif" />
+    
+    <style>
+      
+      img.opacity {
+      opacity: 0.9;
+      }
+  </style>
   </head>
   <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Credit Card Default</a>
+      <a class="navbar-brand" href="#">Predicting Credit Card Default</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -50,26 +58,32 @@
       </div>
     </nav>
 
-    <div class="container">
+    <div class="container">    
+      
+      <h1 class="text-center"> Comparing Machine Learning Models</h1>
+      <hr> 
+      <div class="row justify-content-center mt-5 light_image">
+       
+        <img src="{{ url_for('static', filename='images/ML_classification.jpeg') }}"  class="opacity" height="240px" width="720px"> 
+    </div><br>
+      
       <div class="row justify-content-center mt-3">
-        <h1> Comparing Machine Learning Models</h1><br><br>      
-      </div>
-      <br>
-      <div><p>In our analysis of the different machine learning models, we fixed certain parameters in order to make them more comparable. This involved performing ETL on the same AMEX credit data and saving the resulting data frame into a cleaned .csv file for each model to use as a starting point for building out the remaining components. This allowed for a set of data with identical shape, consisting of 43,508 rows of 33 columns (32 containing the individual features and 1 for the column containing the target of ‘default’ or ‘no-default’).
+    
+          <p>In our analysis of the different machine learning models, we fixed certain parameters in order to make them more comparable. This involved performing ETL on the same AMEX credit data and saving the resulting data frame into a cleaned .csv file for each model to use as a starting point for building out the remaining components. This allowed for a set of data with identical shape, consisting of 43,508 rows of 33 columns (32 containing the individual features and 1 for the column containing the target of ‘default’ or ‘no-default’).
             </p><br>
-        <p>Additionally, when splitting the data set into training and testing data sets, the StandardScaler from sklearn was used to normalize the X_train, X_tests data sets. The target data was not scaled as it was already normalized to either a value of 0, (no-default) or value of 1 (default).</p>
+            <p>Additionally, when splitting the data set into training and testing data sets, the StandardScaler from sklearn was used to normalize the X_train, X_tests data sets. The target data was not scaled as it was already normalized to either a value of 0, (no-default) or value of 1 (default).</p>
         
-       </div>
+      </div>
    
-        <p><span style="font-weight: 400;">Models</span></p>
-        <ul>
-            <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Logistic Regression</span></li>
-            <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Random Forest and Decision Trees</span></li>
-            <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">K Nearest Neighbors (KNN)</span></li>
-            <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Support Vector Machine (SVM)</span></li>
-            <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Neural Network and Deep Learning</span></li>
+          <p><span style="font-weight: 400;">Models</span></p>
+            <ul>
+              <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Logistic Regression (LR)</span></li>
+              <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Random Forest (RFC) and Decision Trees (DTC)</span></li>
+              <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">K Nearest Neighbors (KNN)</span></li>
+              <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Support Vector Machine (SVM)</span></li>
+              <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Neural Network and Deep Learning</span></li>
             </ul>
-        <p><span style="font-weight: 400;">Comparision Metrics:</span></p>
+          <p><span style="font-weight: 400;">Comparision Metrics:</span></p>
      
         
         <ol start="1">
@@ -90,24 +104,24 @@
     </p>
     <img src="{{ url_for('static', filename='images/grid_search_cross_validation.png') }}" height="80%" width="80%"> 
     </div><br>
-    
+    <br>
     <div class="container">
-        <div class="row justify-content-center mt-3">
-            <div>
-                <img src="{{ url_for('static', filename='images/comparison_boxplot.png') }}" height="100%" width="100%"> 
-                <p>The resulting boxplot shows the average accuracy among the different classifiers using the k-fold cross-validation method. Again, Random Forest classifier was the best performer regardin accuracy as compared to the other models with the exception of neural networks, which was not measured using the k-fold validation.</p>
-            </div>
+        <div class="row justify-content-center mt-3 mb-5">
+            
+                <img src="{{ url_for('static', filename='images/comparison_boxplot.png') }}" height="80%" width="80%"> 
+                <p>The resulting boxplot shows the average accuracy among the different classifiers using the k-fold cross-validation method. Again, Random Forest classifier was the best performer regarding accuracy as compared to the other models with the exception of neural networks, which was not measured using the k-fold classifier validation.</p>
+            
        
         </div>
     </div>
-    <br><br>
+    
     
     <div class="container">
         <div class="row justify-content-center mt-3">
-            <div>
-            <h5><b>The Machine Learning Pipeline </b></h5> 
+            
+            <h5 class="text-center" ><b>The Machine Learning Pipeline </b></h5> 
             <p>Using the following steps in the pipeline we were able to discern that Random Forest was the best model to use for the test case given, which included: preparing data, creating training/testing sets, instantiating the classifier, training the classifier, making predictions and evaluating the performance. There was some tweaking of the parameters fo the deep learning Neural Network, however, this was not explored for the other classifiers.</p>     
-            </div>
+            <br><br>
         </div>
     </div>
 

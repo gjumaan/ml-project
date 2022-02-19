@@ -2,16 +2,26 @@
 <html lang="en-us">
   <head>
     <meta charset="UTF-8">
-    <title>Credit Card Default</title>
+    <title>Predicting Credit Card Default</title>
+    
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- Our CSS -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="shortcut icon" href="/static/images/favicon_credit2.gif" type="image/gif" />
+    
+    <!-- <style>
+      
+      img.resize {
+        height=480px;
+        width=600px;
+      }
+    </style> -->
   </head>
   <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Credit Card Default</a>
+      <a class="navbar-brand" href="#">Predicting Credit Card Default</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -51,18 +61,53 @@
     </nav>
 
     <div class="container">
+      <!-- <h1 class="text-center">Project Objective</h1> -->
+     
       <div class="row justify-content-center mt-3">
-        <h1>Project Objective</h1>
-        <p>
-          Our team decided to use machine learning algorithms on American Express client data to predict if they will default on their credit card or not. We used five classifier types to make models and compared them against each other to find the most accurate model that fits our testing data. As well as build a predictor for anyone to put some information into to see if, hypothetically, their credit card would be defaulted on, if it was an American Express one.
+        
+       
+      </div><br>
+      <h1 class="text-center">Can machine learning models predict a credit card default?</h1>
+      <hr>
+        
+        
+      
+        <div class="row justify-content-center mt-4">
+         
+           <img src="{{ url_for('static', filename='images/amex.jpeg') }}" style="padding-top: 10px; padding-bottom:10px;" height=400x width=800px>
+        </div>
+        
+        <br>
+        
+        <div class="row justify-content-left mt-3">
+          <p>That is the question our team decided to try to answer using machine learning algorithms and American Express client data to predict if they will default on their credit card or not. We used five classifier types to make models and compared them against each other to find the most accurate model that fits our testing data. As well as build a predictor for anyone to put some information into to see if, hypothetically, their credit card would be defaulted on, if it was an American Express one.
 
 One of the main reasons behind our final project stems from wanting to use real world data, that's a given, but we also wanted to find data that is applicable to our everyday lives. What is something we all use everyday, at times forgetting the power we hold in our pockets, wallets, and phones? Credit cards. The amount of information tied to credit cards is no laughing matter, so in theory with more accurate data and fields we could create numerous subsets of models just on this type of data alone.
 
 This idea leads us to be excited by the implications for people using our website for personal reasons. Maybe to see if they have a higher or lower chance for defaulting on their card, which is important to figure out for many people who want to keep having good credit. In addition, on the corporate side we could use our code to help companies make more accurate decisions or adjust policies to get less credit card defaults overall, or even push them to soften harsh policies on their customers. Our project is simple, but powerful. We hope you explore our website, and get inspired for your own machine learning projects in the future!
-
+          </div>
         </p>
-      </div>
-    </div>
+
+        <div class="row justify-content-center mt-4">
+          <img src="{{ url_for('static', filename='images/neural_network.png') }}">
+        </div>
+        <br>
+        <hr>
+        
+          <!-- <img class="resize" src="https://assets.bizclikmedia.net/900/b4debc94f86d4581cedff5e40697cbf3:373f1d533b96d8d26d749f06170dac17/gettyimages-458652307-0-jpeg.webp" >  -->
+        
+          <div class="container">
+            <!-- <h5 class="text-center">About</h5> -->
+            <div class="row justify-content-center mt-3">
+                     <p>This project was implemented by Northwestern University Data and Visualization Bootcamp students from the 2021-2022 cohort. Additional credit goes to our dedicated and supportive instructor and TA staff. Additional information about this project and its members can be found <a href="https://github.com/gjumaan/ml-project" target="_blank">here.</a> </p>
+            </div> 
+          </div>
+        </div><br><br>
+        
+        
+        
+
+    
 
     <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

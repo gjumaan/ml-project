@@ -7,11 +7,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- Our CSS -->
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="shortcut icon" href="/static/images/favicon_credit2.gif" type="image/gif" />
+    
   </head>
   <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Credit Card Default</a>
+      <a class="navbar-brand" href="#">Predicting Credit Card Default</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -50,8 +52,11 @@
     </nav>
 
     <div class="container">
+
+      <h1 class="text-center">Decision Tree and Random Forest</h1>
+      <hr>
       <div class="row justify-content-center mt-3">
-        <h1>Decision Tree and Random Forest</h1>
+        
         <p>The decision tree classifier is using the features to answer true/false questions to find out if a customer will or will not default on their credit card and then branching off from the answers to try to make a prediction.  The model has a high accuracy but the credit score feature of the data is very heavily weighted making the other features virtually not important in the decision-making process.
 
           The random forest classifier is using smaller trees and then branching off with a smaller sample to make a prediction.  The weights of the features are much better distributed and allow for other features to be a factor in the decision making.  The accuracy is even higher and had the best accuracy of each of the models that were run.
