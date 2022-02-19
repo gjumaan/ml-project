@@ -41,7 +41,7 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Data Analysis</a>
+            <a class="nav-link" href=#>Comparing ML Models</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/predict-default">Will I Default?</a>
@@ -52,17 +52,68 @@
 
     <div class="container">
       <div class="row justify-content-center mt-3">
-        <h1>K-Nearest Neighbor</h1>
-        <p>In short, the K-nearest neighbor model is a classification technique, also used for regression at times. This method looks at the data presented and puts data points in groups that it best thinks correlates to each group. The K determines the amount of neighbors it is closest to, and uses it to classify the data point, so it's a rather straightforward method compared to others, but it takes a longer time the higher the K value becomes. The KNN graph below, made using the AMEX data, gives a great visual representation of this.
-        </p>
+        <h1> Comparing Machine Learning Models</h1><br><br>      
       </div>
+      <br>
+      <div><p>In our analysis of the different machine learning models, we fixed certain parameters in order to make them more comparable. This involved performing ETL on the same AMEX credit data and saving the resulting data frame into a cleaned .csv file for each model to use as a starting point for building out the remaining components. This allowed for a set of data with identical shape, consisting of 43,508 rows of 33 columns (32 containing the individual features and 1 for the column containing the target of ‘default’ or ‘no-default’).
+            </p><br>
+        <p>Additionally, when splitting the data set into training and testing data sets, the StandardScaler from sklearn was used to normalize the X_train, X_tests data sets. The target data was not scaled as it was already normalized to either a value of 0, (no-default) or value of 1 (default).</p>
+        
+       </div>
+   
+        <p><span style="font-weight: 400;">Models</span></p>
+        <ul>
+            <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Logistic Regression</span></li>
+            <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Random Forest and Decision Trees</span></li>
+            <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">K Nearest Neighbors (KNN)</span></li>
+            <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Support Vector Machine (SVM)</span></li>
+            <li style="font-weight: 400;" aria-level="1"><span style="font-weight: 400;">Neural Network and Deep Learning</span></li>
+            </ul>
+        <p><span style="font-weight: 400;">Comparision Metrics:</span></p>
+     
+        
+        <ol start="1">
+            <li><span style="font-weight: 400;"> Scikit-learn scores the model with respect to accuracy.</span></li>
+            <li><span style="font-weight: 400;"> A confusion matrix is generated using sklearn as well as classification report used to compare precision, recall and F1 scores.</span></li>
+            <li><span style="font-weight: 400;"> k-fold Cross Validation of Classifiers (w/out Neural Network ML model)</span></li>
+        </ol>
       
-      <div class="row justify-content-center mt-5">
-        <h4>Visual Representation of the KNN Graph</h4>
-        <img src="{{ url_for('static', filename='images/knn_graph.png') }}" height="100%" width="100%"> 
-      </div>
+        <div class="row justify-content-center mt-5">
+            <h5>Machine Learning Model Comparison Metrics</h5>
+            <img src="{{ url_for('static', filename='images/model_comparison_table.png') }}" height="80%" width="80%"> 
+        </div><br>
+      <p><span style="font-weight: 400;"><b>Results</b></span></p>
+      <p>Of all the scikit-learn machine learning classifiers, the Random Forest machine learning model was the most accurate among all s even outperforming the Neural Network Deep Learning Model. Using the information from the confusion matrix and classification report, The Decision Tree model had the highest precision, making it the best model at predicting the case of no-default given the test data. Recall was generally the same among all the models as well as F1-scores. Overall, Random Forest has the best combination of scores and would likely be the best predictive model to use for this test case using the credit data provided. 
+        </p>
+    <p><b>k-fold cross validation</b></p>
+    <p>In the basic approach, the training set is split into k smaller sets. A model is trained using k−1 of the folds as training data. The model is then validated using the remaining part of the data. The performance measure reported by k-fold cross-validation is then the average of the values computed in the loop.
+    </p>
+    <img src="{{ url_for('static', filename='images/grid_search_cross_validation.png') }}" height="80%" width="80%"> 
+    </div><br>
+    
+    <div class="container">
+        <div class="row justify-content-center mt-3">
+            <div>
+                <img src="{{ url_for('static', filename='images/comparison_boxplot.png') }}" height="100%" width="100%"> 
+                <p>The resulting boxplot shows the average accuracy among the different classifiers using the k-fold cross-validation method. Again, Random Forest classifier was the best performer regardin accuracy as compared to the other models with the exception of neural networks, which was not measured using the k-fold validation.</p>
+            </div>
+       
+        </div>
+    </div>
+    <br><br>
+    
+    <div class="container">
+        <div class="row justify-content-center mt-3">
+            <div>
+            <h5><b>The Machine Learning Pipeline </b></h5> 
+            <p>Using the following steps in the pipeline we were able to discern that Random Forest was the best model to use for the test case given, which included: preparing data, creating training/testing sets, instantiating the classifier, training the classifier, making predictions and evaluating the performance. There was some tweaking of the parameters fo the deep learning Neural Network, however, this was not explored for the other classifiers.</p>     
+            </div>
+        </div>
+    </div>
 
-      <div class="row justify-content-center mt-5">
+
+
+      <!-- <div class="row justify-content-center mt-5">
         <h4>Further Evaluating the Model</h4>
         <div class="row">
             <p>
@@ -70,36 +121,17 @@
               <img src="{{ url_for('static', filename='images/knn_classification.png') }}" height="100%" width="100%"> 
             </p>
         </div>
-      </div>
+      </div> -->
       
-      <div class="row justify-content-center mt-5">
-        <h4>
-          Confusion Matrix 
-          <!-- Button trigger modal -->
-          <button type="button" class="btn btn-primary btn-circle" data-toggle="modal" data-target="#exampleModal">
-            ?
-          </button>
-        </h4>
 
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-body">
-                A confusion matrix is used to describe the performance of a classifical model
-                by comparing the predicted and actual values.
-                <hr>
-                <img src="{{ url_for('static', filename='images/confusion_matrix.png') }}" height="100%" width="100%"> 
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      <div class="row mt-5">
+
+
+
+     
+             
+
+      <!-- <div class="row mt-5">
         <div class="col">
           <h4 class="text-center">KNN Confusion Matrix</h4>
           <img src="{{ url_for('static', filename='images/knn_confusion.png') }}" height="80%" width="100%"> 
@@ -133,7 +165,7 @@
           </table>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
