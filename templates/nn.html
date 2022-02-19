@@ -11,42 +11,121 @@
   <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Credit Card Default</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/data-exploration">Data Exploration</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Models
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/models/logreg">Logistic Regression</a>
-                <a class="dropdown-item" href="/models/trees">Trees</a>
-                <a class="dropdown-item" href="/models/knn">K Nearest Neighbors</a>
-                <a class="dropdown-item" href="/models/svm">Support Vector Machine</a>
-                <a class="dropdown-item" href="#">Neural Network</a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/predict-default">Will I Default?</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+      <a class="navbar-brand" href="#">Credit Card Default</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/data-exploration">Data Exploration</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Models
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/models/logreg">Logistic Regression</a>
+              <a class="dropdown-item" href="/models/trees">Trees</a>
+              <a class="dropdown-item" href="/models/knn">K Nearest Neighbors</a>
+              <a class="dropdown-item" href="/models/svm">Support Vector Machine</a>
+              <a class="dropdown-item" href="#">Neural Network</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/predict-default">Will I Default?</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
-      <div class="container-fluid">
-        <div class="row justify-content-center">
-          NN Page
+    <div class="container">
+      <div class="row justify-content-center mt-3">
+        <h1 class="mb-3">Neural Network</h1>
+        <img src="{{ url_for('static', filename='images/nn_graphic.png') }}" height="100%" width="100%"> 
+        <p class="mt-4">A neural network is a simplified model of the way the human brain processes information. It works by simulating a large number of interconnected processing units that resemble abstract versions of neurons. <a href=" https://www.ibm.com/docs/en/spss-modeler/18.0.0?topic=networks-neural-model">[1]</a> The basic units are neurons, which are typically organized into layers. There are typically three parts in a neural network: an input layer, with units representing the input fields; one or more hidden layers; and an output layer, with a unit or units representing the target field(s). In this section, we explored the outcomes of neural network models with 1 and 2 hidden layers. We refer to the models with 2 hidden layers as deep learning models.
+        </p>
+      </div>
+      
+      <div class="row justify-content-center mt-5">
+        <h4>Neural Network Model with 1 Hidden Layer</h4>
+        <img src="{{ url_for('static', filename='images/neural_network_structure.jpeg') }}" height="100%" width="100%"> 
+      </div>
+
+      <div class="row justify-content-center mt-5">
+        <h4>Neural Network Model with 2 Hidden Layers</h4>
+        <img src="{{ url_for('static', filename='images/deep_learning_structure.jpeg') }}" height="100%" width="100%"> 
+      </div>
+
+      <div class="row justify-content-center mt-5">
+        <h4>Model Parameters</h4>
+        <p>The cleaned Amex Dataset has 32 features. We first constructed the models using all features. The neural network with 1 hidden layer had 3,502 trainable parameters, and the deep learning model with 2 hidden layers had 13,602 trainable parameters. Since other models in this project have already identified the most important 5 features in this dataset, we used the top 5 features to construct simplified neural network models. The neural network with 1 hidden layer had 802 trainable parameters, and the deep learning model with 2 hidden layers had 10,902 trainable parameters. A comparison of the parameters in the 4 models is shown in the table below.</p>
+        <img src="{{ url_for('static', filename='images/nn_compare.jpeg') }}" height="100%" width="100%"> 
+      </div>
+
+      <div class="row justify-content-center mt-5">
+        <h4>Model Outcomes</h4>
+        <p>For models that utilized all 32 features, accuracies increased progressively with the increased epochs. For the model with 2 hidden layers, the loss for the testing data increased dramatically compared to the model with 1 hidden layer, suggesting possible overfitting with the deep learning model.</p>
+        <div class="col">
+          <h6>Neural Networks (1 hidden layer)</h6>
+          <div class="row">
+            <p>Accurate</p>
+            <p>Img</p>
+          </div>
+          <h6>Neural Networks (1 hidden layer)</h6>
+          <div class="row">
+            <p>Accuray</p>
+            <p>Img</p>
+          </div>
         </div>
+        <div class="col">
+          <h6>Neural Networks (1 hidden layer)</h6>
+          <div class="row">
+            <p>Accuray</p>
+            <p>Img</p>
+          </div>
+          <h6>Neural Networks (1 hidden layer)</h6>
+          <div class="row">
+            <p>Accuray</p>
+            <p>Img</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="row justify-content-center mt-5">
+        <h4>
+          Confusion Matrix 
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary btn-circle" data-toggle="modal" data-target="#exampleModal">
+            ?
+          </button>
+        </h4>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
+                A confusion matrix is used to describe the performance of a classifical model
+                by comparing the predicted and actual values.
+                <hr>
+                <img src="{{ url_for('static', filename='images/confusion_matrix.png') }}" height="80%" width="100%"> 
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-5">
+          <img src="{{ url_for('static', filename='images/nn_confusion.jpeg') }}" height="80%" width="100%"> 
+      </div>
     </div>
 
     <!-- Bootstrap JS -->

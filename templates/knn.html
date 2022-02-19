@@ -11,42 +11,121 @@
   <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Credit Card Default</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/data-exploration">Data Exploration</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Models
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/models/logreg">Logistic Regression</a>
-                <a class="dropdown-item" href="/models/trees">Trees</a>
-                <a class="dropdown-item" href="#">K Nearest Neighbors</a>
-                <a class="dropdown-item" href="/models/svm">Support Vector Machine</a>
-                <a class="dropdown-item" href="/models/nn">Neural Network</a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/predict-default">Will I Default?</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+      <a class="navbar-brand" href="#">Credit Card Default</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/data-exploration">Data Exploration</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Models
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/models/logreg">Logistic Regression</a>
+              <a class="dropdown-item" href="/models/trees">Trees</a>
+              <a class="dropdown-item" href="#">K Nearest Neighbors</a>
+              <a class="dropdown-item" href="/models/svm">Support Vector Machine</a>
+              <a class="dropdown-item" href="/models/nn">Neural Network</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/predict-default">Will I Default?</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
-      <div class="container-fluid">
-        <div class="row justify-content-center">
-          KNN Page
+    <div class="container">
+      <div class="row justify-content-center mt-3">
+        <h1>K-Nearest Neighbor</h1>
+        <p>In short, the K-nearest neighbor model is a classification technique, also used for regression at times. This method looks at the data presented and puts data points in groups that it best thinks correlates to each group. The K determines the amount of neighbors it is closest to, and uses it to classify the data point, so it's a rather straightforward method compared to others, but it takes a longer time the higher the K value becomes. The KNN graph below, made using the AMEX data, gives a great visual representation of this.
+        </p>
+      </div>
+      
+      <div class="row justify-content-center mt-5">
+        <h4>Visual Representation of the KNN Graph</h4>
+        <img src="{{ url_for('static', filename='images/knn_graph.png') }}" height="100%" width="100%"> 
+      </div>
+
+      <div class="row justify-content-center mt-5">
+        <h4>Further Evaluating the Model</h4>
+        <div class="row">
+            <p>
+              Based on the results, the accuracy of the KNN algorithm was roughly 97%. It would vary a tad to the random sample data for training. The confusion matrix and the classification report depicting the training rate and testing error rate are portrayed below.
+              <img src="{{ url_for('static', filename='images/knn_classification.png') }}" height="100%" width="100%"> 
+            </p>
         </div>
+      </div>
+      
+      <div class="row justify-content-center mt-5">
+        <h4>
+          Confusion Matrix 
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary btn-circle" data-toggle="modal" data-target="#exampleModal">
+            ?
+          </button>
+        </h4>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
+                A confusion matrix is used to describe the performance of a classifical model
+                by comparing the predicted and actual values.
+                <hr>
+                <img src="{{ url_for('static', filename='images/confusion_matrix.png') }}" height="80%" width="100%"> 
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-5">
+        <div class="col">
+          <h4 class="text-center">KNN Confusion Matrix</h4>
+          <img src="{{ url_for('static', filename='images/knn_confusion.png') }}" height="80%" width="100%"> 
+        </div>
+        <div class="col">
+          <table class="table table-sm">
+            <thead>
+              <tr>
+                <th scope="col">Labels</th>
+                <th scope="col">Values</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">True Positive</th>
+                <td>9988</td>
+              </tr>
+              <tr>
+                <th scope="row">False Negative</th>
+                <td>1</td>
+              </tr>
+              <tr>
+                <th scope="row">False Positive</th>
+                <td>270</td>
+              </tr>
+              <tr>
+                <th scope="row">True Negative</th>
+                <td>618</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
 
     <!-- Bootstrap JS -->

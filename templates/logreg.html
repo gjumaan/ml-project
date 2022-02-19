@@ -11,42 +11,153 @@
   <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Credit Card Default</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/data-exploration">Data Exploration</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Models
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Logistic Regression</a>
-                <a class="dropdown-item" href="/models/trees">Trees</a>
-                <a class="dropdown-item" href="/models/knn">K Nearest Neighbors</a>
-                <a class="dropdown-item" href="/models/svm">Support Vector Machine</a>
-                <a class="dropdown-item" href="/models/nn">Neural Network</a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/predict-default">Will I Default?</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+      <a class="navbar-brand" href="#">Credit Card Default</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/data-exploration">Data Exploration</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Models
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="#">Logistic Regression</a>
+              <a class="dropdown-item" href="/models/trees">Trees</a>
+              <a class="dropdown-item" href="/models/knn">K Nearest Neighbors</a>
+              <a class="dropdown-item" href="/models/svm">Support Vector Machine</a>
+              <a class="dropdown-item" href="/models/nn">Neural Network</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/predict-default">Will I Default?</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
-      <div class="container-fluid">
-        <div class="row justify-content-center">
-          Log Reg Page
+    <div class="container">
+      <div class="row justify-content-center mt-3">
+        <h1>Logistic Regression</h1>
+        <p>Logistic regression is a classification algorithm used to predict a discrete set of classes or categories. Logistic regression applies an activation function, such as the sigmoid function, to return a probability value of 0 or 1. This can then be mapped to a discrete class in our case, ‘default’ or ‘no-default’ prediction of the credit card user. 
+        </p>
+      </div>
+      
+      <div class="row justify-content-center mt-5">
+        <h4>Visual Representation of the Logistic Regression Graph</h4>
+        <img src="{{ url_for('static', filename='images/logreg_graph.png') }}" height="100%" width="100%"> 
+      </div>
+
+      <div class="row justify-content-center mt-5">
+        <h4>Building the Machine Learning Model</h4>
+        <p><a href="https://scikit-learn.org/stable/index.html#">Scikit-learn</a> is the machine learning Python library used to create a logistic regression model using the features or input variables outlined in the <a href="/data-exploration">data exploration</a> section such as credit score, income, % credit among others. The target or case we are looking to predict is whether the individual with a particular set of features would default on their credit card. The credit data was split into a training set and test set, then scaled using StandardScaler, another Scikit-learn class used to normalize the data. Sklearn was used to fit the logistic regression classifier to the scaled training data set. Scoring the model using the scaled test data set, we obtained an <strong>accuracy</strong> of 97.87% for the logistic regression model which is the sum of True Positives (TP) and True Negative (TN) values divided by all observations. 
+        </p>
+      </div>
+
+      <div class="row justify-content-center mt-5">
+        <h4>
+          Confusion Matrix 
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary btn-circle" data-toggle="modal" data-target="#exampleModal">
+            ?
+          </button>
+        </h4>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
+                A confusion matrix is used to describe the performance of a classifical model
+                by comparing the predicted and actual values.
+                <hr>
+                <img src="{{ url_for('static', filename='images/confusion_matrix.png') }}" height="80%" width="100%"> 
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <div class="row mt-5">
+        <div class="col">
+          <h4 class="text-center">Logistic Regression Confusion Matrix</h4>
+          <img src="{{ url_for('static', filename='images/logreg_confusion.png') }}" height="80%" width="100%"> 
+        </div>
+        <div class="col">
+          <table class="table table-sm">
+            <thead>
+              <tr>
+                <th scope="col">Labels</th>
+                <th scope="col">Values</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">True Positive</th>
+                <td>9929</td>
+              </tr>
+              <tr>
+                <th scope="row">False Positive</th>
+                <td>31</td>
+              </tr>
+              <tr>
+                <th scope="row">False Negative</th>
+                <td>201</td>
+              </tr>
+              <tr>
+                <th scope="row">True Negative</th>
+                <td>716</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col">
+          <h4 class="text-center">Logistic Regression Classification Report</h4>
+          <img src="{{ url_for('static', filename='images/logreg_classification.png') }}" height="80%" width="100%"> 
+        </div>
+      </div>
+
+      <div class="row mt-5">
+        <p>
+          Using the confusion matrix,  we can look at the following performance metrics:
+        </p>
+        <p>
+          <strong>Precision -TP/(TP+FP):</strong> Proportion of positive cases that were correctly identified. The precision is intuitively the ability of the classifier not to label as positive a sample that is negative.
+        </p>
+        <p>
+          <strong>Recall -TP/(TP+FP):</strong> Proportion of actual positive cases which are correctly identified. The recall is intuitively the ability of the classifier to find all the positive samples.
+        </p>
+        <p>
+          <strong>F1 score:</strong> The harmonic average of the precision and recall, where an F1 score reaches its best value at 1 and worst at 0. 
+        </p>
+        <p>
+          <strong>Specificity or Recall of Negative case- TN/(TN+FP):</strong> Proportion of actual negative cases which are correctly identified. 
+        </p>
+      </div>
+
+      <div class="row justify-content-center mt-5">
+        <h4>How did the model do?</h4>
+        <p>
+          Accuracy in the prediction of the test data is about 98%. The model has relatively better precision in the no-default case with 98% accuracy and 96% in predicting default. It is the recall metric where the model has its biggest disparity and opportunity for improvement. Recall for correctly predicted positive observations is near 1.0 (0.9968), whereas the negative case (default scenario) had a ratio 0f 0.78. This is concerning for the implications below.            
+        </p>
+      </div>
+
+      <div class="row justify-content-center mt-5">
+        <h4>Implications for implementing the Logistic Regression Model in real-life</h4>
+        <p>
+          Although the number of false negatives might not have as large an impact on the credit card company, large numbers of false positives, that is, a prediction of a no-default where default is likely, could have a large financial impact depending on the credit limit approved. Imagine a scenario where 201 customers out of 10,877 were(mistakenly) approved for a $5,000 credit line and all defaulted. This would leave <strong>a one million dollar loss</strong> on the bank or institution’s portfolio. Minimizing this type of error would be a priority and other machine learning models that perform better at recall may be better suited.
+        </p>
+      </div>
     </div>
 
     <!-- Bootstrap JS -->

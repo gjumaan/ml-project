@@ -11,42 +11,162 @@
   <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Credit Card Default</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/data-exploration">Data Exploration</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Models
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/models/logreg">Logistic Regression</a>
-                <a class="dropdown-item" href="#">Trees</a>
-                <a class="dropdown-item" href="/models/knn">K Nearest Neighbors</a>
-                <a class="dropdown-item" href="/models/svm">Support Vector Machine</a>
-                <a class="dropdown-item" href="/models/nn">Neural Network</a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/predict-default">Will I Default?</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+      <a class="navbar-brand" href="#">Credit Card Default</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/data-exploration">Data Exploration</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Models
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/models/logreg">Logistic Regression</a>
+              <a class="dropdown-item" href="#">Trees</a>
+              <a class="dropdown-item" href="/models/knn">K Nearest Neighbors</a>
+              <a class="dropdown-item" href="/models/svm">Support Vector Machine</a>
+              <a class="dropdown-item" href="/models/nn">Neural Network</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/predict-default">Will I Default?</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
 
-      <div class="container-fluid">
-        <div class="row justify-content-center">
-          Trees Page
+    <div class="container">
+      <div class="row justify-content-center mt-3">
+        <h1>Decision Tree and Random Forest</h1>
+        <p>The decision tree classifier is using the features to answer true/false questions to find out if a customer will or will not default on their credit card and then branching off from the answers to try to make a prediction.  The model has a high accuracy but the credit score feature of the data is very heavily weighted making the other features virtually not important in the decision-making process.
+
+          The random forest classifier is using smaller trees and then branching off with a smaller sample to make a prediction.  The weights of the features are much better distributed and allow for other features to be a factor in the decision making.  The accuracy is even higher and had the best accuracy of each of the models that were run.
+            
+          The dataset for both the decision tree and the random forest was split into a test train set, the data was scaled.  The model was used to evaluate and make a prediction.  Based on the results, the accuracy of the decision tree and the random forest was 97% and 98% respectively. 
+        </p>
+      </div>
+      
+      <div class="row justify-content-center mt-5">
+        <h4>Visual Representation of the Decision Tree</h4>
+        <img src="{{ url_for('static', filename='images/credit_decision_tree.png') }}" height="100%" width="100%"> 
+      </div>
+
+      <div class="row justify-content-center mt-5">
+        <h4>Top 5 Feature Importances</h4>
+        <div class="row">
+          <div class="col">
+            <img src="{{ url_for('static', filename='images/decision_tree_features.png') }}" height="100%" width="100%"> 
+          </div>
+          <div class="col">
+            <img src="{{ url_for('static', filename='images/random_forest_features.png') }}" height="100%" width="100%"> 
+          </div>
         </div>
+      </div>
+      
+      <div class="row justify-content-center mt-5">
+        <h4>
+          Confusion Matrix 
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary btn-circle" data-toggle="modal" data-target="#exampleModal">
+            ?
+          </button>
+        </h4>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-body">
+                A confusion matrix is used to describe the performance of a classifical model
+                by comparing the predicted and actual values.
+                <hr>
+                <img src="{{ url_for('static', filename='images/confusion_matrix.png') }}" height="80%" width="100%"> 
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row mt-5">
+        <div class="col">
+          <h4 class="text-center">Decision Tree Confusion Matrix</h4>
+          <img src="{{ url_for('static', filename='images/decision_tree_confusion.png') }}" height="80%" width="100%"> 
+        </div>
+        <div class="col">
+          <table class="table table-sm">
+            <thead>
+              <tr>
+                <th scope="col">Labels</th>
+                <th scope="col">Values</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">True Positive</th>
+                <td>9833</td>
+              </tr>
+              <tr>
+                <th scope="row">False Negative</th>
+                <td>156</td>
+              </tr>
+              <tr>
+                <th scope="row">False Positive</th>
+                <td>139</td>
+              </tr>
+              <tr>
+                <th scope="row">True Negative</th>
+                <td>749</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="row mt-5">
+        <div class="col">
+          <h4 class="text-center">Random Forest Confusion Matrix</h4>
+          <img src="{{ url_for('static', filename='images/random_forest_confusion.png') }}" height="80%" width="100%"> 
+        </div>
+        <div class="col">
+          <table class="table table-sm">
+            <thead>
+              <tr>
+                <th scope="col">Labels</th>
+                <th scope="col">Values</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">True Positive</th>
+                <td>9986</td>
+              </tr>
+              <tr>
+                <th scope="row">False Negative</th>
+                <td>3</td>
+              </tr>
+              <tr>
+                <th scope="row">False Positive</th>
+                <td>205</td>
+              </tr>
+              <tr>
+                <th scope="row">True Negative</th>
+                <td>683</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
 
     <!-- Bootstrap JS -->
