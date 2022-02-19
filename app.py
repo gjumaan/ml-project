@@ -94,9 +94,9 @@ def model_prediction():
         prediction = model.predict(final_features_scaled)
 
         if prediction[0] == 1:
-            final_prediction = 'Default'
+            final_prediction = 'Based on the Random Forest model, you will default'
         else:
-            final_prediction = 'No-Default'
+            final_prediction = 'Based on the Random Forest model, you will not default'
     
         return render_template("predictdefault.html", final_prediction=final_prediction)
     except:
