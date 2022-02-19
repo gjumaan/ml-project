@@ -47,24 +47,24 @@
     </nav>
 
     <div class="container">
-      <div class="row justify-content-center mt-3">
-        <h1>K-Nearest Neighbor</h1>
-        <p>In short, the K-nearest neighbor model is a classification technique, also used for regression at times. This method looks at the data presented and puts data points in groups that it best thinks correlates to each group. The K determines the amount of neighbors it is closest to, and uses it to classify the data point, so it's a rather straightforward method compared to others, but it takes a longer time the higher the K value becomes. The KNN graph below, made using the AMEX data, gives a great visual representation of this.
-        </p>
-      </div>
-      
-      <div class="row justify-content-center mt-5">
-        <h4>Visual Representation of the KNN Graph</h4>
-        <img src="{{ url_for('static', filename='images/knn_graph.png') }}" height="100%" width="100%"> 
+      <h1>K-Nearest Neighbor</h1>
+      <hr>
+      <div class="row justify-content-center mt-4">
+        <div class="col">
+          <p>In short, the K-nearest neighbor model is a classification technique, also used for regression at times. This method looks at the data presented and puts data points in groups that it best thinks correlates to each group. The K determines the amount of neighbors it is closest to, and uses it to classify the data point, so it's a rather straightforward method compared to others, but it takes a longer time the higher the K value becomes. The KNN graph below, made using the AMEX data, gives a great visual representation of this.
+        </div>
+        <div class="col">
+          <img src="{{ url_for('static', filename='images/knn_graph.png') }}" height="100%" width="100%"> 
+        </div>
       </div>
 
+      <h4>Further Evaluating the Model</h4>
       <div class="row justify-content-center mt-5">
-        <h4>Further Evaluating the Model</h4>
-        <div class="row">
-            <p>
-              Based on the results, the accuracy of the KNN algorithm was roughly 97%. It would vary a tad to the random sample data for training. The confusion matrix and the classification report depicting the training rate and testing error rate are portrayed below.
-              <img src="{{ url_for('static', filename='images/knn_classification.png') }}" height="100%" width="100%"> 
-            </p>
+        <div class="col">
+          <img src="{{ url_for('static', filename='images/knn_classification.png') }}" height="100%" width="100%"> 
+        </div>
+        <div class="col">
+          Based on the results, the accuracy of the KNN algorithm was roughly 97%. It would vary a tad to the random sample data for training. The confusion matrix and the classification report depicting the training rate and testing error rate are portrayed below.
         </div>
       </div>
       
@@ -97,7 +97,6 @@
 
       <div class="row mt-5">
         <div class="col">
-          <h4 class="text-center">KNN Confusion Matrix</h4>
           <img src="{{ url_for('static', filename='images/knn_confusion.png') }}" height="80%" width="100%"> 
         </div>
         <div class="col">
